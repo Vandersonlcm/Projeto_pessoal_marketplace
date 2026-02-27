@@ -1,0 +1,150 @@
+:root {
+  --primary: #0086ff;
+  --secondary: #f5f5f5;
+  --dark: #222;
+  --light: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: var(--secondary);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.header {
+  background: var(--primary);
+  color: var(--light);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+#searchInput {
+  width: 40%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.icons button {
+  background: var(--light);
+  border: none;
+  padding: 8px 12px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.nav {
+  background: var(--dark);
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+}
+
+.banner {
+  background: #ddd;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.slide {
+  display: none;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.slide.active {
+  display: block;
+}
+
+.products {
+  margin: 40px 0;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: var(--light);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.product-card button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.footer {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media(max-width: 768px) {
+  #searchInput {
+    display: none;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .nav.active {
+    display: block;
+  }
+
+  .nav ul {
+    flex-direction: column;
+  }
+
+  .mobile-only {
+    display: inline-block;
+  }
+}
