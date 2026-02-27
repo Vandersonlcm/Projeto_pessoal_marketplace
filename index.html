@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace Luiz</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+  <div class="container header-container">
+    <h1 class="logo">Marketplace</h1>
+
+    <input type="text" id="searchInput" placeholder="Buscar produtos...">
+
+    <div class="icons">
+      <button id="cartBtn">🛒 <span id="cartCount">0</span></button>
+      <button id="menuToggle" class="mobile-only">☰</button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" id="navMenu">
+  <ul>
+    <li><a href="#">Ofertas</a></li>
+    <li><a href="#">Mais Vendidos</a></li>
+    <li><a href="#">Tecnologia</a></li>
+    <li><a href="#">Contato</a></li>
+  </ul>
+</nav>
+
+<section class="banner">
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide active">Super Oferta 1</div>
+      <div class="slide">Super Oferta 2</div>
+      <div class="slide">Super Oferta 3</div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+
+  <section class="products">
+    <h2>Produtos</h2>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Marketplace UI - Projeto Educacional</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
