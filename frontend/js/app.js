@@ -16,14 +16,6 @@
  * - Adicionar produtos ao carrinho.
  * - Atualizar o contador do carrinho.
  * - Controlar o menu mobile.
- *
- * IMPORTANTE:
- *
- * Neste momento os produtos ainda são carregados
- * pelo arquivo produtos.js.
- *
- * Em uma etapa futura, os produtos serão carregados
- * através da API Python.
  * =========================================================
  */
 
@@ -50,13 +42,17 @@ import {
     adicionarProduto
 } from "./carrinho.js";
 
+import {
+    mostrarNotificacao,
+    inicializarUI
+} from "./ui.js";
+
 
 /**
  * =========================================================
  * ESTADO DA APLICAÇÃO
  * =========================================================
  *
- * Estas variáveis armazenam o estado atual da interface.
  */
 
 
@@ -100,7 +96,6 @@ let criterioOrdenacao = "default";
  * ELEMENTOS DO DOM
  * =========================================================
  *
- * Localizamos os principais elementos da página.
  */
 
 
@@ -113,9 +108,6 @@ const productGrid =
 
 /**
  * Campo de pesquisa.
- *
- * Caso o projeto utilize outro ID no HTML,
- * podemos ajustá-lo posteriormente.
  */
 const searchInput =
     document.getElementById("searchInput");
@@ -162,15 +154,6 @@ const mainMenu =
  * ATUALIZAR PRODUTOS
  * =========================================================
  *
- * Esta função aplica todos os filtros selecionados
- * pelo usuário.
- *
- * Ordem utilizada:
- *
- * 1. Pesquisa
- * 2. Categoria
- * 3. Ordenação
- * 4. Renderização
  */
 function atualizarProdutos() {
 
@@ -477,13 +460,9 @@ function configurarCategorias() {
  * CARRINHO DE COMPRAS
  * =========================================================
  *
- * Nesta etapa utilizamos localStorage.
- *
  * Isso permite manter o carrinho mesmo depois que
  * o usuário atualiza a página.
  *
- * Posteriormente o carrinho poderá ser integrado
- * ao back-end Python.
  */
 
 
@@ -610,8 +589,6 @@ function adicionarAoCarrinho(
  *
  * Utilizamos delegação de eventos.
  *
- * Isso é importante porque os cards são criados
- * dinamicamente pelo produtos.js.
  */
 function configurarCarrinho() {
 
@@ -681,188 +658,6 @@ function configurarCarrinho() {
  *
  * @param {string} mensagem
  */
-function mostrarNotificacao(
-    mensagem
-) {
-
-    /*
-     * Verifica se já existe uma notificação.
-     */
-    const notificacaoExistente =
-        document.querySelector(
-            ".marketplace-notification"
-        );
-
-
-    /*
-     * Remove a notificação anterior.
-     */
-    if (notificacaoExistente) {
-
-        notificacaoExistente.remove();
-
-    }
-
-
-    /*
-     * Cria o elemento.
-     */
-    const notificacao =
-        document.createElement(
-            "div"
-        );
-
-
-    /*
-     * Define a classe CSS.
-     */
-    notificacao.className =
-        "marketplace-notification";
-
-
-    /*
-     * Define o texto.
-     */
-    notificacao.textContent =
-        mensagem;
-
-
-    /*
-     * Adiciona a notificação ao documento.
-     */
-    document.body.appendChild(
-        notificacao
-    );
-
-
-    /*
-     * Remove automaticamente depois de 3 segundos.
-     */
-    setTimeout(
-        () => {
-
-            notificacao.classList.add(
-                "hide"
-            );
-
-
-            /*
-             * Aguarda a animação antes de remover.
-             */
-            setTimeout(
-                () => {
-
-                    notificacao.remove();
-
-                },
-                300
-            );
-
-        },
-        3000
-    );
-
-}
-
-
-/**
- * =========================================================
- * MENU MOBILE
- * =========================================================
- */
-function configurarMenuMobile() {
-
-    /*
-     * Verifica se os elementos existem.
-     */
-    if (
-        !menuToggle ||
-        !mainMenu
-    ) {
-
-        return;
-
-    }
-
-
-    /*
-     * Adiciona o evento de clique.
-     */
-    menuToggle.addEventListener(
-        "click",
-        () => {
-
-            /*
-             * Alterna a classe "active".
-             */
-            mainMenu.classList.toggle(
-                "active"
-            );
-
-
-            /*
-             * Atualiza o atributo de acessibilidade.
-             */
-            const aberto =
-                mainMenu.classList.contains(
-                    "active"
-                );
-
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                aberto
-            );
-
-        }
-    );
-
-}
-
-
-/**
- * =========================================================
- * FECHAR MENU MOBILE
- * =========================================================
- *
- * Fecha o menu quando o usuário seleciona um link.
- */
-function configurarFechamentoMenu() {
-
-    /*
-     * Localiza os links do menu.
-     */
-    const menuLinks =
-        document.querySelectorAll(
-            ".main-menu a"
-        );
-
-
-    /*
-     * Adiciona evento para cada link.
-     */
-    menuLinks.forEach(
-        link => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-                    if (mainMenu) {
-
-                        mainMenu.classList.remove(
-                            "active"
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-}
 
 
 /**
@@ -915,17 +710,7 @@ function inicializarAplicacao() {
      */
     atualizarContadorCarrinho();
 
-
-    /*
-     * Configura o menu mobile.
-     */
-    configurarMenuMobile();
-
-
-    /*
-     * Configura o fechamento do menu.
-     */
-    configurarFechamentoMenu();
+    inicializarUI();
 
 }
 
@@ -934,9 +719,6 @@ function inicializarAplicacao() {
  * =========================================================
  * EXECUTAR APLICAÇÃO
  * =========================================================
- *
- * Esperamos o HTML ser completamente carregado
- * antes de iniciar o JavaScript.
  */
 if (
     document.readyState === "loading"

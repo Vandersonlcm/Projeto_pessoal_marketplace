@@ -1,55 +1,283 @@
-```javascript
 /**
  * =========================================================
- * MÓDULO DA INTERFACE
+ * MÓDULO DE INTERFACE - UI
  * =========================================================
  *
- * Responsabilidade:
+ * Responsabilidade deste arquivo:
  *
- * - Menu mobile.
- * - Notificações.
- * - Interações visuais.
+ * - Controlar elementos visuais.
+ * - Exibir notificações.
+ * - Controlar menu mobile.
+ * - Controlar estados visuais.
+ * - Auxiliar na experiência do usuário.
+ *
  * =========================================================
  */
 
 
 /**
- * Inicializa o menu mobile.
+ * =========================================================
+ * MOSTRAR NOTIFICAÇÃO
+ * =========================================================
+ *
+ * Exibe uma mensagem temporária para o usuário.
+ *
+ * @param {string} mensagem
  */
-export function inicializarMenu() {
-
-    const menuToggle =
-        document.getElementById("menuToggle");
-
-    const navMenu =
-        document.getElementById("navMenu");
-
+export function mostrarNotificacao(
+    mensagem
+) {
 
     /*
-     * Verifica se os elementos existem
-     * antes de adicionar eventos.
+     * Validação básica.
      */
-    if (!menuToggle || !navMenu) {
+    if (!mensagem) {
 
         return;
 
     }
 
 
+    /*
+     * Procura uma notificação que já esteja
+     * sendo exibida.
+     */
+    const notificacaoExistente =
+        document.querySelector(
+            ".marketplace-notification"
+        );
+
+
+    /*
+     * Remove a notificação anterior.
+     */
+    if (notificacaoExistente) {
+
+        notificacaoExistente.remove();
+
+    }
+
+
+    /*
+     * Cria o elemento da notificação.
+     */
+    const notificacao =
+        document.createElement(
+            "div"
+        );
+
+
+    /*
+     * Define a classe CSS.
+     */
+    notificacao.className =
+        "marketplace-notification";
+
+
+    /*
+     * Define o texto.
+     */
+    notificacao.textContent =
+        mensagem;
+
+
+    /*
+     * Adiciona a notificação ao documento.
+     */
+    document.body.appendChild(
+        notificacao
+    );
+
+
+    /*
+     * Pequeno atraso para permitir
+     * a animação de entrada.
+     */
+    requestAnimationFrame(
+        () => {
+
+            notificacao.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+
+    /*
+     * Remove a notificação automaticamente
+     * após 3 segundos.
+     */
+    setTimeout(
+        () => {
+
+            notificacao.classList.remove(
+                "show"
+            );
+
+
+            notificacao.classList.add(
+                "hide"
+            );
+
+
+            /*
+             * Aguarda a animação terminar
+             * antes de remover o elemento.
+             */
+            setTimeout(
+                () => {
+
+                    if (
+                        notificacao &&
+                        notificacao.parentNode
+                    ) {
+
+                        notificacao.remove();
+
+                    }
+
+                },
+                300
+            );
+
+        },
+        3000
+    );
+
+}
+
+
+/**
+ * =========================================================
+ * CONFIGURAR MENU MOBILE
+ * =========================================================
+ *
+ * Controla a abertura e fechamento
+ * do menu em telas menores.
+ */
+export function configurarMenuMobile() {
+
+    /*
+     * Localiza o botão do menu.
+     */
+    const menuToggle =
+        document.getElementById(
+            "menuToggle"
+        );
+
+
+    /*
+     * Localiza o menu.
+     */
+    const navMenu =
+        document.getElementById(
+            "navMenu"
+        );
+
+
+    /*
+     * Verifica se os elementos existem.
+     */
+    if (
+        !menuToggle ||
+        !navMenu
+    ) {
+
+        console.warn(
+            "Elementos do menu mobile não encontrados."
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Configura o estado inicial
+     * de acessibilidade.
+     */
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+
+    /*
+     * Evento de clique.
+     */
     menuToggle.addEventListener(
         "click",
         () => {
 
+            /*
+             * Alterna o estado do menu.
+             */
             const menuAberto =
-                navMenu.classList.toggle("active");
+                navMenu.classList.toggle(
+                    "active"
+                );
 
 
             /*
-             * Atualiza o atributo de acessibilidade.
+             * Atualiza o atributo
+             * aria-expanded.
              */
             menuToggle.setAttribute(
                 "aria-expanded",
                 menuAberto
+            );
+
+
+            /*
+             * Atualiza o atributo
+             * aria-label.
+             */
+            menuToggle.setAttribute(
+                "aria-label",
+                menuAberto
+                    ? "Fechar menu"
+                    : "Abrir menu"
+            );
+
+        }
+    );
+
+
+    /*
+     * Fecha o menu quando o usuário
+     * clica em algum link.
+     */
+    const links =
+        navMenu.querySelectorAll(
+            "a"
+        );
+
+
+    links.forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navMenu.classList.remove(
+                        "active"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Abrir menu"
+                    );
+
+                }
             );
 
         }
@@ -59,47 +287,282 @@ export function inicializarMenu() {
 
 
 /**
- * Exibe uma notificação temporária.
+ * =========================================================
+ * CONFIGURAR SCROLL SUAVE
+ * =========================================================
  *
- * @param {string} mensagem
+ * Faz com que links internos da página
+ * tenham rolagem suave.
  */
-export function mostrarNotificacao(mensagem) {
+export function configurarScrollSuave() {
 
     /*
-     * Cria o elemento da notificação.
+     * Localiza links que apontam
+     * para uma seção da mesma página.
      */
-    const notification =
-        document.createElement("div");
+    const links =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
 
 
-    notification.classList.add(
-        "notification"
-    );
+    links.forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    /*
+                     * Obtém o destino.
+                     */
+                    const destino =
+                        link.getAttribute(
+                            "href"
+                        );
 
 
-    notification.textContent =
-        mensagem;
+                    /*
+                     * Ignora links que apontam
+                     * apenas para "#".
+                     */
+                    if (
+                        !destino ||
+                        destino === "#"
+                    ) {
+
+                        return;
+
+                    }
 
 
-    /*
-     * Adiciona a notificação à página.
-     */
-    document.body.appendChild(
-        notification
-    );
+                    /*
+                     * Procura o elemento.
+                     */
+                    const elemento =
+                        document.querySelector(
+                            destino
+                        );
 
 
-    /*
-     * Remove a notificação depois de 3 segundos.
-     */
-    setTimeout(
-        () => {
+                    /*
+                     * Se o elemento existir,
+                     * fazemos a rolagem.
+                     */
+                    if (elemento) {
 
-            notification.remove();
+                        event.preventDefault();
 
-        },
-        3000
+
+                        elemento.scrollIntoView(
+                            {
+                                behavior: "smooth",
+                                block: "start"
+                            }
+                        );
+
+                    }
+
+                }
+            );
+
+        }
     );
 
 }
-```
+
+
+/**
+ * =========================================================
+ * CONFIGURAR BOTÃO VOLTAR AO TOPO
+ * =========================================================
+ *
+ * Caso exista um botão com:
+ *
+ * id="backToTop"
+ *
+ * ele será utilizado para voltar ao topo.
+ */
+export function configurarVoltarAoTopo() {
+
+    const botao =
+        document.getElementById(
+            "backToTop"
+        );
+
+
+    /*
+     * Se o botão não existir,
+     * não fazemos nada.
+     */
+    if (!botao) {
+
+        return;
+
+    }
+
+
+    /*
+     * Inicialmente o botão fica escondido.
+     */
+    botao.classList.remove(
+        "visible"
+    );
+
+
+    /*
+     * Monitora o scroll da página.
+     */
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            /*
+             * Mostra o botão depois
+             * de determinado deslocamento.
+             */
+            if (
+                window.scrollY > 400
+            ) {
+
+                botao.classList.add(
+                    "visible"
+                );
+
+            }
+
+            else {
+
+                botao.classList.remove(
+                    "visible"
+                );
+
+            }
+
+        }
+    );
+
+
+    /*
+     * Clique para voltar ao topo.
+     */
+    botao.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo(
+                {
+                    top: 0,
+                    behavior: "smooth"
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/**
+ * =========================================================
+ * DESTAQUE DE LINK ATIVO
+ * =========================================================
+ *
+ * Adiciona uma classe visual ao link
+ * correspondente à seção atual.
+ */
+export function configurarNavegacaoAtiva() {
+
+    const links =
+        document.querySelectorAll(
+            ".main-menu a"
+        );
+
+
+    /*
+     * Se não houver links,
+     * encerramos.
+     */
+    if (!links.length) {
+
+        return;
+
+    }
+
+
+    links.forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    /*
+                     * Remove a classe dos demais links.
+                     */
+                    links.forEach(
+                        item => {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    /*
+                     * Ativa o link selecionado.
+                     */
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/**
+ * =========================================================
+ * INICIALIZAR UI
+ * =========================================================
+ *
+ * Função central para inicializar os recursos
+ * visuais da aplicação.
+ */
+export function inicializarUI() {
+
+    console.log(
+        "Interface carregada com sucesso."
+    );
+
+
+    /*
+     * Configura o menu mobile.
+     */
+    configurarMenuMobile();
+
+
+    /*
+     * Configura rolagem suave.
+     */
+    configurarScrollSuave();
+
+
+    /*
+     * Configura botão voltar ao topo.
+     */
+    configurarVoltarAoTopo();
+
+
+    /*
+     * Configura navegação ativa.
+     */
+    configurarNavegacaoAtiva();
+
+}

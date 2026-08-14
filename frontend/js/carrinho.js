@@ -13,10 +13,6 @@
  * - Salvar o carrinho no navegador.
  * - Recuperar o carrinho.
  *
- * Nesta etapa utilizamos localStorage.
- *
- * Posteriormente este módulo poderá ser integrado
- * ao back-end Python.
  * =========================================================
  */
 
@@ -547,14 +543,6 @@ export function calcularSubtotal() {
  * =========================================================
  *
  * Neste momento o total é igual ao subtotal.
- *
- * Posteriormente podemos acrescentar:
- *
- * - Frete;
- * - Descontos;
- * - Cupons;
- * - Impostos;
- * - Outras regras comerciais.
  *
  * @returns {number}
  */

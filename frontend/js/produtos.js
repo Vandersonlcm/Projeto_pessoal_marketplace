@@ -11,12 +11,6 @@
  * - Ordenar produtos.
  * - Localizar produtos pelo ID.
  *
- * IMPORTANTE:
- *
- * Nesta primeira etapa os produtos são simulados.
- *
- * Posteriormente, este módulo será adaptado para buscar
- * os produtos através da API Python.
  * =========================================================
  */
 
@@ -24,11 +18,6 @@
 /**
  * Lista temporária de produtos.
  *
- * Atualmente os produtos estão armazenados diretamente
- * no JavaScript.
- *
- * Na etapa do Back-end, esses dados virão do banco
- * de dados através da API Python.
  */
 const produtos = [
 
@@ -226,12 +215,6 @@ export function renderizarProdutos(listaProdutos) {
             /*
              * Monta o conteúdo HTML do card.
              *
-             * ATENÇÃO:
-             *
-             * A crase que abre esta estrutura deve
-             * permanecer exatamente aqui.
-             *
-             * A crase no final também é obrigatória.
              */
             card.innerHTML = `
                 <div class="product-image">
@@ -481,9 +464,6 @@ export function buscarProdutoPorId(id) {
  * =========================================================
  *
  * Retorna a lista completa de produtos.
- *
- * Posteriormente esta função será substituída
- * por uma chamada à API Python.
  *
  * @returns {Array}
  */
