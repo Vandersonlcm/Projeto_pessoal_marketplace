@@ -1,0 +1,236 @@
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+
+/* =========================================================
+   TABLETS
+   ========================================================= */
+
+@media (max-width: 900px) {
+    
+    .header-container {
+
+        gap: 18px;
+
+    }
+
+    .action-text {
+
+        display: none;
+
+    }
+
+
+    .category-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+    }
+
+
+    .footer-container {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+}
+
+/* =========================================================
+   CELULARES
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .header-container {
+
+        min-height: 68px;
+
+    }
+
+
+    .logo {
+
+        font-size: 1.25rem;
+
+    }
+
+
+    .search-container {
+
+        display: none;
+
+    }
+
+
+    .menu-toggle {
+
+        display: block;
+
+    }
+
+
+    .nav {
+
+        display: none;
+
+    }
+
+
+    .nav.active {
+
+        display: block;
+
+    }
+
+
+    .nav-list {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+    }
+
+
+    .nav-list a {
+
+        padding: 15px;
+
+        text-align: center;
+
+        border-bottom:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.08
+            );
+
+    }
+
+
+    .hero {
+
+        min-height: 350px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 2.2rem;
+
+    }
+
+
+    .categories,
+    .products {
+
+        padding: 50px 0;
+
+    }
+
+
+    .products-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .product-filter {
+
+        width: 100%;
+
+    }
+
+
+    .product-filter select {
+
+        flex: 1;
+
+    }
+
+
+    .footer-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+
+        width: 90%;
+
+    }
+
+
+    .category-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 10px;
+
+    }
+
+
+    .category-card {
+
+        padding: 18px 10px;
+
+    }
+
+
+    .category-icon {
+
+        font-size: 1.5rem;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 1.9rem;
+
+    }
+
+
+    .hero p {
+
+        font-size: 0.95rem;
+
+    }
+
+
+    .section-header h2 {
+
+        font-size: 1.6rem;
+
+    }
+
+}
+
