@@ -47,6 +47,10 @@ import {
     inicializarUI
 } from "./ui.js";
 
+import {
+    inicializarBanner
+} from "./banner.js";
+
 
 /**
  * =========================================================
@@ -710,7 +714,17 @@ function inicializarAplicacao() {
      */
     atualizarContadorCarrinho();
 
+    /*
+     * Inicializa os recursos
+     * visuais da interface.
+     */
     inicializarUI();
+
+    /*
+     * Inicializa o carrossel
+     * promocional.
+     */
+    inicializarBanner();
 
 }
 
