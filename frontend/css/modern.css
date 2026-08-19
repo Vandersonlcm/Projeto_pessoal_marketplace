@@ -21,884 +21,610 @@
    Ele trabalha apenas com apresentação visual.
    ========================================================= */
 
-
 /* =========================================================
    1. VARIÁVEIS DO PROJETO
    ========================================================= */
 
 :root {
+  /* Cores principais */
+  --modern-primary: #2563eb;
+  --modern-primary-dark: #1d4ed8;
+  --modern-primary-light: #dbeafe;
 
-    /* Cores principais */
-    --modern-primary: #2563eb;
-    --modern-primary-dark: #1d4ed8;
-    --modern-primary-light: #dbeafe;
+  /* Cores de destaque */
+  --modern-accent: #f97316;
+  --modern-success: #16a34a;
+  --modern-danger: #dc2626;
 
-    /* Cores de destaque */
-    --modern-accent: #f97316;
-    --modern-success: #16a34a;
-    --modern-danger: #dc2626;
+  /* Cores neutras */
+  --modern-white: #ffffff;
+  --modern-background: #f8fafc;
+  --modern-surface: #ffffff;
+  --modern-border: #e2e8f0;
 
-    /* Cores neutras */
-    --modern-white: #ffffff;
-    --modern-background: #f8fafc;
-    --modern-surface: #ffffff;
-    --modern-border: #e2e8f0;
+  /* Texto */
+  --modern-text: #0f172a;
+  --modern-text-secondary: #64748b;
+  --modern-text-light: #94a3b8;
 
-    /* Texto */
-    --modern-text: #0f172a;
-    --modern-text-secondary: #64748b;
-    --modern-text-light: #94a3b8;
+  /* Sombras */
+  --modern-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
 
-    /* Sombras */
-    --modern-shadow-sm:
-        0 2px 8px rgba(15, 23, 42, 0.06);
+  --modern-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 
-    --modern-shadow:
-        0 8px 24px rgba(15, 23, 42, 0.08);
+  --modern-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
 
-    --modern-shadow-lg:
-        0 16px 40px rgba(15, 23, 42, 0.12);
+  /* Bordas */
+  --modern-radius-sm: 8px;
+  --modern-radius: 14px;
+  --modern-radius-lg: 20px;
 
-    /* Bordas */
-    --modern-radius-sm: 8px;
-    --modern-radius: 14px;
-    --modern-radius-lg: 20px;
-
-    /* Transições */
-    --modern-transition:
-        all 0.25s ease;
-
+  /* Transições */
+  --modern-transition: all 0.25s ease;
 }
-
 
 /* =========================================================
    2. CONFIGURAÇÃO GERAL
    ========================================================= */
 
 html {
-
-    scroll-behavior: smooth;
-
+  scroll-behavior: smooth;
 }
-
 
 body {
+  background: var(--modern-background);
 
-    background:
-        var(--modern-background);
+  color: var(--modern-text);
 
-    color:
-        var(--modern-text);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
 
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
-    line-height: 1.5;
-
+  line-height: 1.5;
 }
-
 
 /* =========================================================
    3. CONTAINER
    ========================================================= */
 
 .container {
+  width: min(1200px, calc(100% - 40px));
 
-    width: min(
-        1200px,
-        calc(100% - 40px)
-    );
-
-    margin:
-        0 auto;
-
+  margin: 0 auto;
 }
-
 
 /* =========================================================
    4. CABEÇALHO
    ========================================================= */
 
 .header {
+  position: sticky;
 
-    position: sticky;
+  top: 0;
 
-    top: 0;
+  z-index: 1000;
 
-    z-index: 1000;
+  background: rgba(255, 255, 255, 0.96);
 
-    background:
-        rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--modern-border);
 
-    border-bottom:
-        1px solid var(--modern-border);
+  box-shadow: var(--modern-shadow-sm);
 
-    box-shadow:
-        var(--modern-shadow-sm);
-
-    backdrop-filter:
-        blur(12px);
-
+  backdrop-filter: blur(12px);
 }
-
 
 .header-container {
+  min-height: 76px;
 
-    min-height: 76px;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
-
-    gap: 24px;
-
+  gap: 24px;
 }
-
 
 /* =========================================================
    5. LOGO
    ========================================================= */
 
 .logo {
+  margin: 0;
 
-    margin: 0;
+  font-size: 1.6rem;
 
-    font-size: 1.6rem;
+  font-weight: 800;
 
-    font-weight: 800;
+  letter-spacing: -0.5px;
 
-    letter-spacing: -0.5px;
+  color: var(--modern-primary);
 
-    color:
-        var(--modern-primary);
-
-    white-space: nowrap;
-
+  white-space: nowrap;
 }
-
 
 .logo::after {
+  content: ".";
 
-    content: ".";
-
-    color:
-        var(--modern-accent);
-
+  color: var(--modern-accent);
 }
-
 
 /* =========================================================
    6. CAMPO DE PESQUISA
    ========================================================= */
 
 #searchInput {
+  flex: 1;
 
-    flex: 1;
+  min-width: 180px;
 
-    min-width: 180px;
+  height: 46px;
 
-    height: 46px;
+  padding: 0 18px;
 
-    padding:
-        0 18px;
+  border: 1px solid var(--modern-border);
 
-    border:
-        1px solid var(--modern-border);
+  border-radius: 999px;
 
-    border-radius:
-        999px;
+  background: var(--modern-background);
 
-    background:
-        var(--modern-background);
+  color: var(--modern-text);
 
-    color:
-        var(--modern-text);
+  font-size: 0.95rem;
 
-    font-size:
-        0.95rem;
+  outline: none;
 
-    outline: none;
-
-    transition:
-        var(--modern-transition);
-
+  transition: var(--modern-transition);
 }
-
 
 #searchInput::placeholder {
-
-    color:
-        var(--modern-text-light);
-
+  color: var(--modern-text-light);
 }
-
 
 #searchInput:hover {
-
-    border-color:
-        #cbd5e1;
-
+  border-color: #cbd5e1;
 }
-
 
 #searchInput:focus {
+  background: var(--modern-white);
 
-    background:
-        var(--modern-white);
+  border-color: var(--modern-primary);
 
-    border-color:
-        var(--modern-primary);
-
-    box-shadow:
-        0 0 0 4px var(--modern-primary-light);
-
+  box-shadow: 0 0 0 4px var(--modern-primary-light);
 }
-
 
 /* =========================================================
    7. ÍCONES / AÇÕES DO CABEÇALHO
    ========================================================= */
 
 .icons {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
-
-    gap: 10px;
-
+  gap: 10px;
 }
-
 
 .icons button {
+  width: 44px;
 
-    width: 44px;
+  height: 44px;
 
-    height: 44px;
+  display: inline-flex;
 
-    display: inline-flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  border: 0;
 
-    border: 0;
+  border-radius: 50%;
 
-    border-radius:
-        50%;
+  background: var(--modern-background);
 
-    background:
-        var(--modern-background);
+  color: var(--modern-text);
 
-    color:
-        var(--modern-text);
+  cursor: pointer;
 
-    cursor: pointer;
-
-    transition:
-        var(--modern-transition);
-
+  transition: var(--modern-transition);
 }
-
 
 .icons button:hover {
+  background: var(--modern-primary-light);
 
-    background:
-        var(--modern-primary-light);
+  color: var(--modern-primary);
 
-    color:
-        var(--modern-primary);
-
-    transform:
-        translateY(-2px);
-
+  transform: translateY(-2px);
 }
-
 
 #cartBtn {
-
-    position: relative;
-
+  position: relative;
 }
-
 
 /* =========================================================
    8. CONTADOR DO CARRINHO
    ========================================================= */
 
 #cartCount {
+  position: absolute;
 
-    position: absolute;
+  top: -3px;
 
-    top: -3px;
+  right: -3px;
 
-    right: -3px;
+  min-width: 19px;
 
-    min-width: 19px;
+  height: 19px;
 
-    height: 19px;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  padding: 0 4px;
 
-    padding:
-        0 4px;
+  border-radius: 999px;
 
-    border-radius:
-        999px;
+  background: var(--modern-accent);
 
-    background:
-        var(--modern-accent);
+  color: var(--modern-white);
 
-    color:
-        var(--modern-white);
+  font-size: 0.7rem;
 
-    font-size:
-        0.7rem;
+  font-weight: 700;
 
-    font-weight: 700;
-
-    line-height: 1;
-
+  line-height: 1;
 }
-
 
 /* =========================================================
    9. MENU PRINCIPAL
    ========================================================= */
 
 .nav {
+  background: var(--modern-white);
 
-    background:
-        var(--modern-white);
-
-    border-bottom:
-        1px solid var(--modern-border);
-
+  border-bottom: 1px solid var(--modern-border);
 }
-
 
 .nav ul {
+  width: min(1200px, calc(100% - 40px));
 
-    width: min(
-        1200px,
-        calc(100% - 40px)
-    );
+  margin: 0 auto;
 
-    margin:
-        0 auto;
+  padding: 0;
 
-    padding:
-        0;
+  min-height: 52px;
 
-    min-height: 52px;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  gap: 10px;
 
-    gap: 10px;
-
-    list-style: none;
-
+  list-style: none;
 }
-
 
 .nav li {
-
-    margin: 0;
-
+  margin: 0;
 }
-
 
 .nav a {
+  display: block;
 
-    display: block;
+  padding: 9px 16px;
 
-    padding:
-        9px 16px;
+  border-radius: 999px;
 
-    border-radius:
-        999px;
+  color: var(--modern-text-secondary);
 
-    color:
-        var(--modern-text-secondary);
+  text-decoration: none;
 
-    text-decoration: none;
+  font-size: 0.9rem;
 
-    font-size:
-        0.9rem;
+  font-weight: 600;
 
-    font-weight: 600;
-
-    transition:
-        var(--modern-transition);
-
+  transition: var(--modern-transition);
 }
-
 
 .nav a:hover {
+  background: var(--modern-primary-light);
 
-    background:
-        var(--modern-primary-light);
-
-    color:
-        var(--modern-primary);
-
+  color: var(--modern-primary);
 }
-
 
 .nav a.active {
+  background: var(--modern-primary);
 
-    background:
-        var(--modern-primary);
-
-    color:
-        var(--modern-white);
-
+  color: var(--modern-white);
 }
-
 
 /* =========================================================
    10. BANNER
    ========================================================= */
 
 .banner {
+  width: min(1200px, calc(100% - 40px));
 
-    width: min(
-        1200px,
-        calc(100% - 40px)
-    );
-
-    margin:
-        28px auto 0;
-
+  margin: 28px auto 0;
 }
-
 
 .carousel {
+  overflow: hidden;
 
-    overflow: hidden;
+  min-height: 260px;
 
-    min-height: 260px;
+  border-radius: var(--modern-radius-lg);
 
-    border-radius:
-        var(--modern-radius-lg);
+  background: linear-gradient(135deg, #1d4ed8, #2563eb 50%, #60a5fa);
 
-    background:
-        linear-gradient(
-            135deg,
-            #1d4ed8,
-            #2563eb 50%,
-            #60a5fa
-        );
-
-    box-shadow:
-        var(--modern-shadow-lg);
-
+  box-shadow: var(--modern-shadow-lg);
 }
-
 
 .slides {
+  width: 100%;
 
-    width: 100%;
+  min-height: 260px;
 
-    min-height: 260px;
-
-    display: flex;
-
+  display: flex;
 }
-
 
 .slide {
+  flex: 1;
 
-    flex: 1;
+  min-height: 260px;
 
-    min-height: 260px;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  padding: 30px;
 
-    padding:
-        30px;
+  color: var(--modern-white);
 
-    color:
-        var(--modern-white);
+  font-size: clamp(1.5rem, 4vw, 2.7rem);
 
-    font-size:
-        clamp(
-            1.5rem,
-            4vw,
-            2.7rem
-        );
+  font-weight: 800;
 
-    font-weight: 800;
-
-    text-align: center;
-
+  text-align: center;
 }
-
 
 /* =========================================================
    11. ÁREA DE PRODUTOS
    ========================================================= */
 
 .products {
-
-    padding:
-        42px 0 60px;
-
+  padding: 42px 0 60px;
 }
-
 
 .products h2 {
+  margin: 0 0 24px;
 
-    margin:
-        0 0 24px;
+  color: var(--modern-text);
 
-    color:
-        var(--modern-text);
+  font-size: clamp(1.5rem, 3vw, 2rem);
 
-    font-size:
-        clamp(
-            1.5rem,
-            3vw,
-            2rem
-        );
+  font-weight: 800;
 
-    font-weight:
-        800;
-
-    letter-spacing:
-        -0.5px;
-
+  letter-spacing: -0.5px;
 }
-
 
 /* =========================================================
    12. GRID DE PRODUTOS
    ========================================================= */
 
 .product-grid {
+  display: grid;
 
-    display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
-    grid-template-columns:
-        repeat(
-            4,
-            minmax(
-                0,
-                1fr
-            )
-        );
-
-    gap:
-        22px;
-
+  gap: 22px;
 }
-
 
 /* =========================================================
    13. CARD DO PRODUTO
    ========================================================= */
 
 .product-card {
+  position: relative;
 
-    position: relative;
+  overflow: hidden;
 
-    overflow: hidden;
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
+  min-width: 0;
 
-    min-width: 0;
+  background: var(--modern-surface);
 
-    background:
-        var(--modern-surface);
+  border: 1px solid var(--modern-border);
 
-    border:
-        1px solid var(--modern-border);
+  border-radius: var(--modern-radius);
 
-    border-radius:
-        var(--modern-radius);
+  box-shadow: var(--modern-shadow-sm);
 
-    box-shadow:
-        var(--modern-shadow-sm);
-
-    transition:
-        var(--modern-transition);
-
+  transition: var(--modern-transition);
 }
-
 
 .product-card:hover {
+  transform: translateY(-6px);
 
-    transform:
-        translateY(-6px);
+  border-color: #cbd5e1;
 
-    border-color:
-        #cbd5e1;
-
-    box-shadow:
-        var(--modern-shadow-lg);
-
+  box-shadow: var(--modern-shadow-lg);
 }
-
 
 /* =========================================================
    14. IMAGEM DO PRODUTO
    ========================================================= */
 
 .product-image {
+  position: relative;
 
-    position: relative;
+  overflow: hidden;
 
-    overflow: hidden;
+  width: 100%;
 
-    width: 100%;
+  aspect-ratio: 1 / 1;
 
-    aspect-ratio:
-        1 / 1;
-
-    background:
-        #f1f5f9;
-
+  background: #f1f5f9;
 }
-
 
 .product-image img {
+  width: 100%;
 
-    width: 100%;
+  height: 100%;
 
-    height: 100%;
+  display: block;
 
-    display: block;
+  object-fit: cover;
 
-    object-fit: cover;
-
-    transition:
-        transform 0.4s ease;
-
+  transition: transform 0.4s ease;
 }
 
-
-.product-card:hover
-.product-image img {
-
-    transform:
-        scale(1.05);
-
+.product-card:hover .product-image img {
+  transform: scale(1.05);
 }
-
 
 /* =========================================================
    15. CONTEÚDO DO CARD
    ========================================================= */
 
 .product-content {
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
+  flex: 1;
 
-    flex: 1;
-
-    padding:
-        18px;
-
+  padding: 18px;
 }
-
 
 /* =========================================================
    16. CATEGORIA
    ========================================================= */
 
 .product-category {
+  align-self: flex-start;
 
-    align-self: flex-start;
+  margin-bottom: 8px;
 
-    margin-bottom:
-        8px;
+  padding: 5px 9px;
 
-    padding:
-        5px 9px;
+  border-radius: 999px;
 
-    border-radius:
-        999px;
+  background: var(--modern-primary-light);
 
-    background:
-        var(--modern-primary-light);
+  color: var(--modern-primary);
 
-    color:
-        var(--modern-primary);
+  font-size: 0.72rem;
 
-    font-size:
-        0.72rem;
+  font-weight: 700;
 
-    font-weight:
-        700;
+  text-transform: uppercase;
 
-    text-transform:
-        uppercase;
-
-    letter-spacing:
-        0.3px;
-
+  letter-spacing: 0.3px;
 }
-
 
 /* =========================================================
    17. NOME DO PRODUTO
    ========================================================= */
 
 .product-name {
+  margin: 0 0 8px;
 
-    margin:
-        0 0 8px;
+  color: var(--modern-text);
 
-    color:
-        var(--modern-text);
+  font-size: 1rem;
 
-    font-size:
-        1rem;
+  font-weight: 700;
 
-    font-weight:
-        700;
-
-    line-height:
-        1.35;
-
+  line-height: 1.35;
 }
-
 
 /* =========================================================
    18. DESCRIÇÃO
    ========================================================= */
 
 .product-description {
+  margin: 0 0 16px;
 
-    margin:
-        0 0 16px;
+  color: var(--modern-text-secondary);
 
-    color:
-        var(--modern-text-secondary);
+  font-size: 0.86rem;
 
-    font-size:
-        0.86rem;
+  line-height: 1.5;
 
-    line-height:
-        1.5;
+  display: -webkit-box;
 
-    display:
-        -webkit-box;
+  -webkit-box-orient: vertical;
 
-    -webkit-box-orient:
-        vertical;
+  -webkit-line-clamp: 2;
 
-    -webkit-line-clamp:
-        2;
+  line-clamp: 2;
 
-    line-clamp:
-        2;
-
-    overflow:
-        hidden;
-
+  overflow: hidden;
 }
-
 
 /* =========================================================
    19. PREÇO
    ========================================================= */
 
 .product-price {
+  margin-top: auto;
 
-    margin-top:
-        auto;
+  margin-bottom: 14px;
 
-    margin-bottom:
-        14px;
+  color: var(--modern-primary);
 
-    color:
-        var(--modern-primary);
+  font-size: 1.35rem;
 
-    font-size:
-        1.35rem;
-
-    font-weight:
-        800;
-
+  font-weight: 800;
 }
-
 
 /* =========================================================
    20. BOTÕES DOS PRODUTOS
    ========================================================= */
 
 .product-card button {
+  width: 100%;
 
-    width: 100%;
+  min-height: 42px;
 
-    min-height: 42px;
+  border: 0;
 
-    border: 0;
+  border-radius: var(--modern-radius-sm);
 
-    border-radius:
-        var(--modern-radius-sm);
+  background: var(--modern-primary);
 
-    background:
-        var(--modern-primary);
+  color: var(--modern-white);
 
-    color:
-        var(--modern-white);
+  font-size: 0.9rem;
 
-    font-size:
-        0.9rem;
+  font-weight: 700;
 
-    font-weight:
-        700;
+  cursor: pointer;
 
-    cursor: pointer;
-
-    transition:
-        var(--modern-transition);
-
+  transition: var(--modern-transition);
 }
-
 
 .product-card button:hover {
+  background: var(--modern-primary-dark);
 
-    background:
-        var(--modern-primary-dark);
-
-    transform:
-        translateY(-1px);
-
+  transform: translateY(-1px);
 }
-
 
 .product-card button:active {
-
-    transform:
-        translateY(0);
-
+  transform: translateY(0);
 }
-
 
 /* =========================================================
    21. ESTADO DE FOCO
@@ -907,519 +633,306 @@ body {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
+  outline: 3px solid var(--modern-primary-light);
 
-    outline:
-        3px solid var(--modern-primary-light);
-
-    outline-offset:
-        2px;
-
+  outline-offset: 2px;
 }
-
 
 /* =========================================================
    22. NOTIFICAÇÃO
    ========================================================= */
 
 .marketplace-notification {
+  position: fixed;
 
-    position: fixed;
+  right: 24px;
 
-    right: 24px;
+  bottom: 24px;
 
-    bottom: 24px;
+  z-index: 2000;
 
-    z-index: 2000;
+  max-width: 360px;
 
-    max-width: 360px;
+  padding: 14px 18px;
 
-    padding:
-        14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
-    border:
-        1px solid rgba(
-            255,
-            255,
-            255,
-            0.2
-        );
+  border-radius: 12px;
 
-    border-radius:
-        12px;
+  background: #0f172a;
 
-    background:
-        #0f172a;
+  color: var(--modern-white);
 
-    color:
-        var(--modern-white);
+  box-shadow: var(--modern-shadow-lg);
 
-    box-shadow:
-        var(--modern-shadow-lg);
+  font-size: 0.9rem;
 
-    font-size:
-        0.9rem;
+  font-weight: 600;
 
-    font-weight:
-        600;
+  opacity: 0;
 
-    opacity:
-        0;
+  transform: translateY(15px);
 
-    transform:
-        translateY(15px);
+  pointer-events: none;
 
-    pointer-events:
-        none;
-
-    transition:
-        all 0.3s ease;
-
+  transition: all 0.3s ease;
 }
-
 
 .marketplace-notification.show {
+  opacity: 1;
 
-    opacity:
-        1;
-
-    transform:
-        translateY(0);
-
+  transform: translateY(0);
 }
-
 
 .marketplace-notification.hide {
+  opacity: 0;
 
-    opacity:
-        0;
-
-    transform:
-        translateY(15px);
-
+  transform: translateY(15px);
 }
-
 
 /* =========================================================
    23. BOTÃO VOLTAR AO TOPO
    ========================================================= */
 
 #backToTop {
+  position: fixed;
 
-    position: fixed;
+  right: 24px;
 
-    right: 24px;
+  bottom: 24px;
 
-    bottom: 24px;
+  z-index: 1000;
 
-    z-index: 1000;
+  width: 44px;
 
-    width: 44px;
+  height: 44px;
 
-    height: 44px;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  border: 0;
 
-    border: 0;
+  border-radius: 50%;
 
-    border-radius:
-        50%;
+  background: var(--modern-primary);
 
-    background:
-        var(--modern-primary);
+  color: var(--modern-white);
 
-    color:
-        var(--modern-white);
+  cursor: pointer;
 
-    cursor: pointer;
+  opacity: 0;
 
-    opacity:
-        0;
+  visibility: hidden;
 
-    visibility:
-        hidden;
+  transform: translateY(10px);
 
-    transform:
-        translateY(10px);
-
-    transition:
-        var(--modern-transition);
-
+  transition: var(--modern-transition);
 }
-
 
 #backToTop.visible {
+  opacity: 1;
 
-    opacity:
-        1;
+  visibility: visible;
 
-    visibility:
-        visible;
-
-    transform:
-        translateY(0);
-
+  transform: translateY(0);
 }
-
 
 #backToTop:hover {
+  background: var(--modern-primary-dark);
 
-    background:
-        var(--modern-primary-dark);
-
-    transform:
-        translateY(-3px);
-
+  transform: translateY(-3px);
 }
-
 
 /* =========================================================
    24. RODAPÉ
    ========================================================= */
 
 .footer {
+  margin-top: 20px;
 
-    margin-top:
-        20px;
+  padding: 40px 0;
 
-    padding:
-        40px 0;
+  background: #0f172a;
 
-    background:
-        #0f172a;
-
-    color:
-        #cbd5e1;
-
+  color: #cbd5e1;
 }
-
 
 .footer .container {
-
-    text-align:
-        center;
-
+  text-align: center;
 }
-
 
 .footer p {
-
-    margin:
-        5px 0;
-
+  margin: 5px 0;
 }
-
 
 /* =========================================================
    25. RESPONSIVIDADE
    ========================================================= */
 
-
 /* ---------------------------------------------------------
    TABLETS
    --------------------------------------------------------- */
 
-@media (
-    max-width: 1000px
-) {
+@media (max-width: 1000px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 
-    .product-grid {
-
-        grid-template-columns:
-            repeat(
-                3,
-                minmax(
-                    0,
-                    1fr
-                )
-            );
-
-    }
-
-    .header-container {
-
-        gap:
-            16px;
-
-    }
-
+  .header-container {
+    gap: 16px;
+  }
 }
-
 
 /* ---------------------------------------------------------
    TABLETS PEQUENOS
    --------------------------------------------------------- */
 
-@media (
-    max-width: 760px
-) {
+@media (max-width: 760px) {
+  .container {
+    width: min(100% - 28px, 680px);
+  }
 
-    .container {
+  .header-container {
+    flex-wrap: wrap;
 
-        width:
-            min(
-                100% - 28px,
-                680px
-            );
+    padding: 14px 0;
+  }
 
-    }
+  .logo {
+    font-size: 1.35rem;
+  }
 
+  #searchInput {
+    order: 3;
 
-    .header-container {
+    flex-basis: 100%;
+  }
 
-        flex-wrap:
-            wrap;
+  .nav ul {
+    width: calc(100% - 28px);
 
-        padding:
-            14px 0;
+    justify-content: flex-start;
 
-    }
+    overflow-x: auto;
 
+    padding: 8px 0;
+  }
 
-    .logo {
+  .nav a {
+    white-space: nowrap;
+  }
 
-        font-size:
-            1.35rem;
+  .banner {
+    width: calc(100% - 28px);
 
-    }
+    margin-top: 18px;
+  }
 
+  .carousel,
+  .slides,
+  .slide {
+    min-height: 210px;
+  }
 
-    #searchInput {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-        order:
-            3;
+    gap: 16px;
+  }
 
-        flex-basis:
-            100%;
-
-    }
-
-
-    .nav ul {
-
-        width:
-            calc(
-                100% - 28px
-            );
-
-        justify-content:
-            flex-start;
-
-        overflow-x:
-            auto;
-
-        padding:
-            8px 0;
-
-    }
-
-
-    .nav a {
-
-        white-space:
-            nowrap;
-
-    }
-
-
-    .banner {
-
-        width:
-            calc(
-                100% - 28px
-            );
-
-        margin-top:
-            18px;
-
-    }
-
-
-    .carousel,
-    .slides,
-    .slide {
-
-        min-height:
-            210px;
-
-    }
-
-
-    .product-grid {
-
-        grid-template-columns:
-            repeat(
-                2,
-                minmax(
-                    0,
-                    1fr
-                )
-            );
-
-        gap:
-            16px;
-
-    }
-
-
-    .product-content {
-
-        padding:
-            14px;
-
-    }
-
+  .product-content {
+    padding: 14px;
+  }
 }
-
 
 /* ---------------------------------------------------------
    SMARTPHONES
    --------------------------------------------------------- */
 
-@media (
-    max-width: 480px
-) {
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .product-grid {
+  .product-image {
+    aspect-ratio: 4 / 3;
+  }
 
-        grid-template-columns:
-            1fr;
+  .products {
+    padding-top: 30px;
+  }
 
-    }
+  .products h2 {
+    font-size: 1.45rem;
+  }
 
+  .marketplace-notification {
+    left: 14px;
 
-    .product-image {
+    right: 14px;
 
-        aspect-ratio:
-            4 / 3;
+    bottom: 14px;
 
-    }
+    max-width: none;
+  }
 
+  #backToTop {
+    right: 14px;
 
-    .products {
-
-        padding-top:
-            30px;
-
-    }
-
-
-    .products h2 {
-
-        font-size:
-            1.45rem;
-
-    }
-
-
-    .marketplace-notification {
-
-        left:
-            14px;
-
-        right:
-            14px;
-
-        bottom:
-            14px;
-
-        max-width:
-            none;
-
-    }
-
-
-    #backToTop {
-
-        right:
-            14px;
-
-        bottom:
-            14px;
-
-    }
-
+    bottom: 14px;
+  }
 }
-
 
 /* =========================================================
    26. REDUÇÃO DE MOVIMENTO
    ========================================================= */
 
-@media (
-    prefers-reduced-motion: reduce
-) {
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-    html {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
 
-        scroll-behavior:
-            auto;
+    animation-iteration-count: 1 !important;
 
-    }
-
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
-
-    }
-
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* =========================================================
    CARROSSEL PROMOCIONAL
    ========================================================= */
 
-
 /*
  * Container externo do carrossel.
  */
 .hero-carousel {
+  width: min(1200px, calc(100% - 40px));
 
-    width:
-        min(
-            1200px,
-            calc(100% - 40px)
-        );
-
-    margin:
-        28px auto 0;
-
+  margin: 28px auto 0;
 }
-
 
 /*
  * Área que contém todos os slides.
  */
 .hero-carousel-track {
+  position: relative;
 
-    position: relative;
+  overflow: hidden;
 
-    overflow: hidden;
+  min-height: 390px;
 
-    min-height:
-        390px;
+  border-radius: var(--modern-radius-lg);
 
-    border-radius:
-        var(--modern-radius-lg);
-
-    box-shadow:
-        var(--modern-shadow-lg);
-
+  box-shadow: var(--modern-shadow-lg);
 }
-
 
 /*
  * =========================================================
@@ -1428,60 +941,46 @@ input:focus-visible {
  */
 
 .hero-slide {
+  position: absolute;
 
-    position: absolute;
+  inset: 0;
 
-    inset: 0;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: space-between;
 
-    justify-content: space-between;
+  gap: 30px;
 
-    gap: 30px;
+  padding: 55px 70px;
 
-    padding:
-        55px 70px;
+  color: var(--modern-white);
 
-    color:
-        var(--modern-white);
+  opacity: 0;
 
-    opacity:
-        0;
+  visibility: hidden;
 
-    visibility:
-        hidden;
+  transform: scale(1.02);
 
-    transform:
-        scale(1.02);
-
-    transition:
-        opacity 0.5s ease,
-        transform 0.5s ease,
-        visibility 0.5s ease;
-
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    visibility 0.5s ease;
 }
-
 
 /*
  * Slide ativo.
  */
 .hero-slide.active {
+  position: relative;
 
-    position: relative;
+  opacity: 1;
 
-    opacity:
-        1;
+  visibility: visible;
 
-    visibility:
-        visible;
-
-    transform:
-        scale(1);
-
+  transform: scale(1);
 }
-
 
 /*
  * =========================================================
@@ -1490,56 +989,20 @@ input:focus-visible {
  */
 
 .hero-slide-blue {
-
-    background:
-        linear-gradient(
-            135deg,
-            #1d4ed8,
-            #2563eb 55%,
-            #60a5fa
-        );
-
+  background: linear-gradient(135deg, #1d4ed8, #2563eb 55%, #60a5fa);
 }
-
 
 .hero-slide-purple {
-
-    background:
-        linear-gradient(
-            135deg,
-            #6d28d9,
-            #7c3aed 55%,
-            #a78bfa
-        );
-
+  background: linear-gradient(135deg, #6d28d9, #7c3aed 55%, #a78bfa);
 }
-
 
 .hero-slide-orange {
-
-    background:
-        linear-gradient(
-            135deg,
-            #c2410c,
-            #ea580c 55%,
-            #fb923c
-        );
-
+  background: linear-gradient(135deg, #c2410c, #ea580c 55%, #fb923c);
 }
-
 
 .hero-slide-green {
-
-    background:
-        linear-gradient(
-            135deg,
-            #047857,
-            #059669 55%,
-            #34d399
-        );
-
+  background: linear-gradient(135deg, #047857, #059669 55%, #34d399);
 }
-
 
 /*
  * =========================================================
@@ -1548,119 +1011,62 @@ input:focus-visible {
  */
 
 .hero-slide-content {
+  position: relative;
 
-    position: relative;
+  z-index: 2;
 
-    z-index: 2;
-
-    width:
-        min(
-            650px,
-            70%
-        );
-
+  width: min(650px, 70%);
 }
-
 
 .hero-slide-tag {
+  display: inline-flex;
 
-    display:
-        inline-flex;
+  align-items: center;
 
-    align-items:
-        center;
+  margin-bottom: 14px;
 
-    margin-bottom:
-        14px;
+  padding: 6px 11px;
 
-    padding:
-        6px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
-    border:
-        1px solid rgba(
-            255,
-            255,
-            255,
-            0.25
-        );
+  border-radius: 999px;
 
-    border-radius:
-        999px;
+  background: rgba(255, 255, 255, 0.12);
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.12
-        );
+  font-size: 0.75rem;
 
-    font-size:
-        0.75rem;
+  font-weight: 800;
 
-    font-weight:
-        800;
-
-    letter-spacing:
-        0.8px;
-
+  letter-spacing: 0.8px;
 }
-
 
 .hero-slide h1 {
+  max-width: 650px;
 
-    max-width:
-        650px;
+  margin: 0 0 16px;
 
-    margin:
-        0 0 16px;
+  color: var(--modern-white);
 
-    color:
-        var(--modern-white);
+  font-size: clamp(2rem, 4vw, 3.4rem);
 
-    font-size:
-        clamp(
-            2rem,
-            4vw,
-            3.4rem
-        );
+  font-weight: 850;
 
-    font-weight:
-        850;
+  line-height: 1.05;
 
-    line-height:
-        1.05;
-
-    letter-spacing:
-        -1px;
-
+  letter-spacing: -1px;
 }
-
 
 .hero-slide p {
+  max-width: 560px;
 
-    max-width:
-        560px;
+  margin: 0 0 25px;
 
-    margin:
-        0 0 25px;
+  color: rgba(255, 255, 255, 0.88);
 
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.88
-        );
+  font-size: 1rem;
 
-    font-size:
-        1rem;
-
-    line-height:
-        1.6;
-
+  line-height: 1.6;
 }
-
 
 /*
  * =========================================================
@@ -1669,69 +1075,38 @@ input:focus-visible {
  */
 
 .hero-slide-button {
+  display: inline-flex;
 
-    display:
-        inline-flex;
+  align-items: center;
 
-    align-items:
-        center;
+  justify-content: center;
 
-    justify-content:
-        center;
+  min-height: 44px;
 
-    min-height:
-        44px;
+  padding: 0 20px;
 
-    padding:
-        0 20px;
+  border-radius: 10px;
 
-    border-radius:
-        10px;
+  background: var(--modern-white);
 
-    background:
-        var(--modern-white);
+  color: var(--modern-text);
 
-    color:
-        var(--modern-text);
+  text-decoration: none;
 
-    text-decoration:
-        none;
+  font-size: 0.9rem;
 
-    font-size:
-        0.9rem;
+  font-weight: 750;
 
-    font-weight:
-        750;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
 
-    box-shadow:
-        0 8px 20px rgba(
-            15,
-            23,
-            42,
-            0.15
-        );
-
-    transition:
-        var(--modern-transition);
-
+  transition: var(--modern-transition);
 }
-
 
 .hero-slide-button:hover {
+  transform: translateY(-2px);
 
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 12px 25px rgba(
-            15,
-            23,
-            42,
-            0.2
-        );
-
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.2);
 }
-
 
 /*
  * =========================================================
@@ -1740,72 +1115,36 @@ input:focus-visible {
  */
 
 .hero-slide-decoration {
+  position: absolute;
 
-    position:
-        absolute;
+  right: 70px;
 
-    right:
-        70px;
+  top: 50%;
 
-    top:
-        50%;
+  z-index: 1;
 
-    z-index:
-        1;
+  transform: translateY(-50%);
 
-    transform:
-        translateY(-50%);
+  width: 240px;
 
-    width:
-        240px;
+  height: 240px;
 
-    height:
-        240px;
+  display: flex;
 
-    display:
-        flex;
+  align-items: center;
 
-    align-items:
-        center;
+  justify-content: center;
 
-    justify-content:
-        center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 
-    border:
-        1px solid rgba(
-            255,
-            255,
-            255,
-            0.18
-        );
+  border-radius: 50%;
 
-    border-radius:
-        50%;
+  background: rgba(255, 255, 255, 0.1);
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.1
-        );
+  font-size: 8rem;
 
-    font-size:
-        8rem;
-
-    filter:
-        drop-shadow(
-            0 20px 25px
-            rgba(
-                15,
-                23,
-                42,
-                0.15
-            )
-        );
-
+  filter: drop-shadow(0 20px 25px rgba(15, 23, 42, 0.15));
 }
-
 
 /*
  * =========================================================
@@ -1814,103 +1153,54 @@ input:focus-visible {
  */
 
 .hero-carousel-control {
+  position: absolute;
 
-    position:
-        absolute;
+  top: 50%;
 
-    top:
-        50%;
+  z-index: 10;
 
-    z-index:
-        10;
+  width: 46px;
 
-    width:
-        46px;
+  height: 46px;
 
-    height:
-        46px;
+  display: flex;
 
-    display:
-        flex;
+  align-items: center;
 
-    align-items:
-        center;
+  justify-content: center;
 
-    justify-content:
-        center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
-    border:
-        1px solid rgba(
-            255,
-            255,
-            255,
-            0.25
-        );
+  border-radius: 50%;
 
-    border-radius:
-        50%;
+  background: rgba(15, 23, 42, 0.25);
 
-    background:
-        rgba(
-            15,
-            23,
-            42,
-            0.25
-        );
+  color: var(--modern-white);
 
-    color:
-        var(--modern-white);
+  font-size: 2rem;
 
-    font-size:
-        2rem;
+  line-height: 1;
 
-    line-height:
-        1;
+  cursor: pointer;
 
-    cursor:
-        pointer;
+  transform: translateY(-50%);
 
-    transform:
-        translateY(-50%);
-
-    transition:
-        var(--modern-transition);
-
+  transition: var(--modern-transition);
 }
-
 
 .hero-carousel-control:hover {
+  background: rgba(15, 23, 42, 0.5);
 
-    background:
-        rgba(
-            15,
-            23,
-            42,
-            0.5
-        );
-
-    transform:
-        translateY(-50%)
-        scale(1.05);
-
+  transform: translateY(-50%) scale(1.05);
 }
-
 
 .hero-carousel-previous {
-
-    left:
-        20px;
-
+  left: 20px;
 }
-
 
 .hero-carousel-next {
-
-    right:
-        20px;
-
+  right: 20px;
 }
-
 
 /*
  * =========================================================
@@ -1919,58 +1209,272 @@ input:focus-visible {
  */
 
 .hero-carousel-indicators {
+  position: absolute;
 
-    position:
-        absolute;
+  left: 50%;
 
-    left:
-        50%;
+  bottom: 20px;
 
-    bottom:
-        20px;
+  z-index: 10;
 
-    z-index:
-        10;
+  display: flex;
 
-    display:
-        flex;
+  align-items: center;
 
-    align-items:
-        center;
+  gap: 8px;
 
-    gap:
-        8px;
+  transform: translateX(-50%);
+}
 
-    transform:
-        translateX(-50%);
+.hero-indicator {
+  width: 9px;
+
+  height: 9px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  cursor: pointer;
+
+  transition: var(--modern-transition);
+}
+
+.hero-indicator.active {
+  width: 28px;
+
+  border-radius: 999px;
+
+  background: var(--modern-white);
+}
+
+/*
+ * =========================================================
+ * RESPONSIVIDADE DO CARROSSEL
+ * =========================================================
+ */
+
+@media (max-width: 760px) {
+  .hero-carousel {
+    width: calc(100% - 28px);
+
+    margin-top: 18px;
+  }
+
+  .hero-carousel-track {
+    min-height: 390px;
+  }
+
+  .hero-slide {
+    min-height: 390px;
+
+    padding: 40px 45px;
+
+    align-items: flex-start;
+
+    justify-content: center;
+  }
+
+  .hero-slide-content {
+    width: 100%;
+
+    max-width: 100%;
+
+    padding-bottom: 35px;
+  }
+
+  .hero-slide h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .hero-slide-decoration {
+    width: 130px;
+
+    height: 130px;
+
+    right: 25px;
+
+    top: auto;
+
+    bottom: 35px;
+
+    font-size: 4rem;
+
+    transform: none;
+
+    opacity: 0.45;
+  }
+
+  .hero-carousel-control {
+    width: 38px;
+
+    height: 38px;
+
+    font-size: 1.5rem;
+  }
+
+  .hero-carousel-previous {
+    left: 10px;
+  }
+
+  .hero-carousel-next {
+    right: 10px;
+  }
+}
+
+/*
+ * =========================================================
+ * SMARTPHONES
+ * =========================================================
+ */
+
+@media (max-width: 480px) {
+  .hero-carousel-track {
+    min-height: 420px;
+  }
+
+  .hero-slide {
+    min-height: 420px;
+
+    padding: 35px 28px;
+  }
+
+  .hero-slide h1 {
+    font-size: 1.85rem;
+
+    line-height: 1.1;
+  }
+
+  .hero-slide p {
+    font-size: 0.9rem;
+  }
+
+  .hero-slide-decoration {
+    width: 105px;
+
+    height: 105px;
+
+    right: 20px;
+
+    bottom: 38px;
+
+    font-size: 3.2rem;
+  }
+
+  .hero-carousel-indicators {
+    bottom: 14px;
+  }
+}
+
+/*
+ * =========================================================
+ * REDUÇÃO DE MOVIMENTO
+ * =========================================================
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+
+  .hero-slide-button,
+  .hero-carousel-control,
+  .hero-indicator {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   CONTROLES DOS PRODUTOS
+   ========================================================= */
+
+
+/*
+ * Cabeçalho da área de produtos.
+ */
+.products-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-bottom: 24px;
 
 }
 
 
-.hero-indicator {
+/*
+ * Controle de ordenação.
+ */
+.product-filter {
 
-    width:
-        9px;
+    display: flex;
 
-    height:
-        9px;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+}
+
+
+/*
+ * Texto do filtro.
+ */
+.product-filter label {
+
+    color:
+        var(--modern-text-secondary);
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        600;
+
+}
+
+
+/*
+ * Select de ordenação.
+ */
+.product-filter select {
+
+    min-width:
+        180px;
 
     padding:
-        0;
+        11px 14px;
 
     border:
-        0;
+        1px solid var(--modern-border);
 
     border-radius:
-        50%;
+        var(--modern-radius-sm);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.45
-        );
+        var(--modern-white);
+
+    color:
+        var(--modern-text);
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.88rem;
+
+    font-weight:
+        600;
 
     cursor:
         pointer;
@@ -1981,10 +1485,77 @@ input:focus-visible {
 }
 
 
-.hero-indicator.active {
+/*
+ * Estado de foco do select.
+ */
+.product-filter select:focus {
 
-    width:
-        28px;
+    outline:
+        none;
+
+    border-color:
+        var(--modern-primary);
+
+    box-shadow:
+        0 0 0 3px
+        var(--modern-primary-light);
+
+}
+
+
+/* =========================================================
+   BARRA DE RESULTADOS
+   ========================================================= */
+
+.products-toolbar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+
+    padding-bottom: 16px;
+
+    border-bottom:
+        1px solid var(--modern-border);
+
+}
+
+
+/*
+ * Quantidade encontrada.
+ */
+.products-count {
+
+    margin: 0;
+
+    color:
+        var(--modern-text-secondary);
+
+    font-size:
+        0.9rem;
+
+    font-weight:
+        600;
+
+}
+
+
+/*
+ * Botão para limpar filtros.
+ */
+.clear-filters {
+
+    padding:
+        8px 14px;
+
+    border:
+        1px solid var(--modern-border);
 
     border-radius:
         999px;
@@ -1992,246 +1563,226 @@ input:focus-visible {
     background:
         var(--modern-white);
 
+    color:
+        var(--modern-primary);
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        var(--modern-transition);
+
 }
 
 
 /*
- * =========================================================
- * RESPONSIVIDADE DO CARROSSEL
- * =========================================================
+ * Hover do botão.
  */
+.clear-filters:hover {
+
+    background:
+        var(--modern-primary-light);
+
+    border-color:
+        var(--modern-primary);
+
+}
+
+
+/* =========================================================
+   ESTADO VAZIO
+   ========================================================= */
+
+.empty-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height:
+        260px;
+
+    padding:
+        40px 20px;
+
+    border:
+        1px dashed var(--modern-border);
+
+    border-radius:
+        var(--modern-radius-lg);
+
+    background:
+        var(--modern-surface);
+
+    text-align:
+        center;
+
+}
+
+
+/*
+ * Classe utilizada pelo JavaScript
+ * para esconder o estado vazio.
+ */
+.empty-state.hidden {
+
+    display:
+        none;
+
+}
+
+
+/*
+ * Ícone do estado vazio.
+ */
+.empty-state-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width:
+        64px;
+
+    height:
+        64px;
+
+    margin-bottom:
+        16px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--modern-primary-light);
+
+    font-size:
+        1.8rem;
+
+}
+
+
+/*
+ * Título.
+ */
+.empty-state h3 {
+
+    margin:
+        0 0 8px;
+
+    color:
+        var(--modern-text);
+
+    font-size:
+        1.15rem;
+
+}
+
+
+/*
+ * Descrição.
+ */
+.empty-state p {
+
+    margin:
+        0 0 20px;
+
+    color:
+        var(--modern-text-secondary);
+
+    font-size:
+        0.9rem;
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE DOS FILTROS
+   ========================================================= */
 
 @media (
     max-width: 760px
 ) {
 
-    .hero-carousel {
+    /*
+     * Cabeçalho passa para coluna.
+     */
+    .products-header {
 
-        width:
-            calc(
-                100% - 28px
-            );
+        align-items:
+            stretch;
 
-        margin-top:
+        flex-direction:
+            column;
+
+        gap:
             18px;
 
     }
 
 
-    .hero-carousel-track {
+    /*
+     * Filtro ocupa toda a largura.
+     */
+    .product-filter {
 
-        min-height:
-            390px;
+        justify-content:
+            space-between;
 
     }
 
 
-    .hero-slide {
+    /*
+     * Select maior no celular.
+     */
+    .product-filter select {
 
-        min-height:
-            390px;
+        flex:
+            1;
 
-        padding:
-            40px 45px;
+        min-width:
+            0;
+
+    }
+
+
+    /*
+     * Barra de resultados.
+     */
+    .products-toolbar {
 
         align-items:
             flex-start;
 
-        justify-content:
-            center;
+        flex-direction:
+            column;
 
     }
 
 
-    .hero-slide-content {
+    /*
+     * Botão ocupa apenas o espaço
+     * necessário.
+     */
+    .clear-filters {
 
         width:
-            100%;
-
-        max-width:
-            100%;
-
-        padding-bottom:
-            35px;
-
-    }
-
-
-    .hero-slide h1 {
-
-        font-size:
-            clamp(
-                1.8rem,
-                8vw,
-                2.5rem
-            );
-
-    }
-
-
-    .hero-slide-decoration {
-
-        width:
-            130px;
-
-        height:
-            130px;
-
-        right:
-            25px;
-
-        top:
             auto;
-
-        bottom:
-            35px;
-
-        font-size:
-            4rem;
-
-        transform:
-            none;
-
-        opacity:
-            0.45;
-
-    }
-
-
-    .hero-carousel-control {
-
-        width:
-            38px;
-
-        height:
-            38px;
-
-        font-size:
-            1.5rem;
-
-    }
-
-
-    .hero-carousel-previous {
-
-        left:
-            10px;
-
-    }
-
-
-    .hero-carousel-next {
-
-        right:
-            10px;
-
-    }
-
-}
-
-
-/*
- * =========================================================
- * SMARTPHONES
- * =========================================================
- */
-
-@media (
-    max-width: 480px
-) {
-
-    .hero-carousel-track {
-
-        min-height:
-            420px;
-
-    }
-
-
-    .hero-slide {
-
-        min-height:
-            420px;
-
-        padding:
-            35px 28px;
-
-    }
-
-
-    .hero-slide h1 {
-
-        font-size:
-            1.85rem;
-
-        line-height:
-            1.1;
-
-    }
-
-
-    .hero-slide p {
-
-        font-size:
-            0.9rem;
-
-    }
-
-
-    .hero-slide-decoration {
-
-        width:
-            105px;
-
-        height:
-            105px;
-
-        right:
-            20px;
-
-        bottom:
-            38px;
-
-        font-size:
-            3.2rem;
-
-    }
-
-
-    .hero-carousel-indicators {
-
-        bottom:
-            14px;
-
-    }
-
-}
-
-
-/*
- * =========================================================
- * REDUÇÃO DE MOVIMENTO
- * =========================================================
- */
-
-@media (
-    prefers-reduced-motion: reduce
-) {
-
-    .hero-slide {
-
-        transition:
-            none;
-
-    }
-
-
-    .hero-slide-button,
-    .hero-carousel-control,
-    .hero-indicator {
-
-        transition:
-            none;
 
     }
 

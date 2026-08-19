@@ -1,0 +1,19 @@
+# =========================================================
+# DEPENDÊNCIAS DO BACKEND
+# Projeto: Marketplace Luiz
+# =========================================================
+
+# Framework para criação da API REST
+fastapi
+
+# Servidor ASGI utilizado para executar a aplicação
+uvicorn[standard]
+
+# ORM para comunicação com o banco de dados
+sqlalchemy
+
+# Framework para testes automatizados
+pytest
+
+# Cliente HTTP utilizado nos testes da API
+httpx

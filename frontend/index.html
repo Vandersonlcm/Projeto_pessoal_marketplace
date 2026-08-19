@@ -329,43 +329,63 @@
 
       <section class="products" id="produtos">
         <div class="container">
-          <!-- Cabeçalho da seção -->
-          <div class="section-header products-header">
-            <div>
+
+          <div class="products-header">
+            <div class="section-header">
+          
               <span class="section-tag"> NOSSO CATÁLOGO </span>
 
-              <h2>Produtos em destaque</h2>
+              <h2>Encontre o produto ideal</h2>
 
-              <p id="productsDescription">
-                Confira alguns dos produtos disponíveis.
-              </p>
+              <p>Pesquise, filtre e organize os produtos disponíveis.</p>
             </div>
 
-            <!-- Ordenação dos produtos -->
             <div class="product-filter">
-              <label for="sortProducts"> Ordenar: </label>
+              <label for="sortProducts"> Ordenar por </label>
 
-              <select id="sortProducts">
+              <select id="sortProducts" aria-label="Ordenar produtos">
+                <!-- Ordem original -->
                 <option value="default">Relevância</option>
 
+                <!-- Menor preço -->
                 <option value="price-low">Menor preço</option>
 
+                <!-- Maior preço -->
                 <option value="price-high">Maior preço</option>
 
-                <option value="name">Nome</option>
+                <!-- Ordem alfabética -->
+                <option value="name">Nome: A-Z</option>
               </select>
             </div>
           </div>
 
+          <!-- =================================================
+             INFORMAÇÕES DOS RESULTADOS
+             ================================================= -->
+
+          <div class="products-toolbar">
+
+            <p id="productsCount" class="products-count">
+              Produtos encontrados
+            </p>
+
+            <button type="button" id="clearFilters" class="clear-filters">
+              Limpar filtros
+            </button>
+          </div>
+
           <div class="product-grid" id="productGrid"></div>
 
-
           <div id="emptyState" class="empty-state hidden">
-            <span class="empty-icon" aria-hidden="true"> 🔎 </span>
+            <div class="empty-state-icon" aria-hidden="true">🔎</div>
 
             <h3>Nenhum produto encontrado</h3>
 
-            <p>Tente pesquisar por outro termo.</p>
+            <p>Não encontramos produtos para os filtros selecionados.</p>
+
+            <button type="button" id="clearEmptyFilters" class="product-button">
+              Limpar filtros
+            </button>
           </div>
         </div>
       </section>
